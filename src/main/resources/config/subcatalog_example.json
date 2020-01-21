@@ -1,0 +1,230 @@
+{
+	"type": "MANUAL",
+	"auto": {
+		"subcata_levels": [
+			"BG","B","S"
+		],
+		"option_combo_filter": [
+			"B-VIE"
+		],
+		"copy_filter": [
+			"S-TAK"
+		],
+		"copy_filter_select": ""
+	},
+	"levels": [
+		2,2,1
+	],
+	"manual": [
+		{
+			"code": "1",
+			"name": "Catálogo Completo",
+			"option_search": "",
+			"copy_search": ""
+		},
+		{
+			"code": "2",
+			"name": "Biblioteca de Asturias",
+			"option_search": "COPI:B-44",
+			"copy_search": "SUCOBI='44'",
+			"child": [
+				{
+					"code": "201",
+					"name": "Biblioteca Pública de Oviedo",
+					"option_search": "COPI:S-441",
+					"copy_search": "SUCOSU='441'",
+					"child": [
+						{
+							"code": "20101",
+							"name": "Adultos",
+							"option_search": "COPI:L-ADU",
+							"copy_search": "COCOCL='ADU'"
+						},
+						{
+							"code": "20102",
+							"name": "Consulta Infantil",
+							"option_search": "COPI:L-CIN",
+							"copy_search": "COCOCL='CIN'"
+						}
+					]
+				},
+				{
+					"code": "202",
+					"name": "Sección asturiana",
+					"option_search": "COPI:S-442",
+					"copy_search": "SUCOSU='442'",
+					"child": [
+						{
+							"code": "20201",
+							"name": "Archivo de Música",
+							"option_search": "COPI:L-AMA",
+							"copy_search": "COCOCL='AMA'"
+						},
+						{
+							"code": "20202",
+							"name": "Colección Asturiana",
+							"option_search": "COPI:L-RAST",
+							"copy_search": "COCOCL='RAST'"
+						}
+					]
+				}
+			]
+		},
+		{
+			"code": "3",
+			"name": "Bibliotecas Públicas",
+			"option_search": "COPI:BG-BP",
+			"copy_search": "exists( select * from biblio where bicobi=sucobi and BICOBG='BP')",
+			"child": [
+				{
+					"code": "301",
+					"name": "Allende",
+					"option_search": "COPI:B-1",
+					"copy_search": "SUCOBI='1'",
+					"child": [
+						{
+							"code": "30101",
+							"name": "Pola de Allende",
+							"option_search": "COPI:S-11",
+							"copy_search": "SUCOSU='11'",
+							"child": [
+								{
+									"code": "3010101",
+									"name": "Adultos",
+									"option_search": "COPI:L-ADU",
+									"copy_search": "COCOCL='ADU'"
+								},
+								{
+									"code": "3010102",
+									"name": "Infantil",
+									"option_search": "COPI:L-INF",
+									"copy_search": "COCOCL='INF'"
+								}
+							]
+						}
+					]
+				},
+				{
+					"code": "302",
+					"name": "Aller",
+					"option_search": "COPI:B-2",
+					"copy_search": "SUCOBI='2'",
+					"child": [
+						{
+							"code": "30201",
+							"name": "Moreda",
+							"option_search": "COPI:S-21",
+							"copy_search": "SUCOSU='21'",
+							"child": [
+								{
+									"code": "3020101",
+									"name": "Adultos",
+									"option_search": "COPI:L-ADU",
+									"copy_search": "COCOCL='ADU'"
+								},
+								{
+									"code": "3020102",
+									"name": "Infantil",
+									"option_search": "COPI:L-INF",
+									"copy_search": "COCOCL='INF'"
+								}
+							]
+						},
+						{
+							"code": "30202",
+							"name": "Cabañaquinta",
+							"option_search": "COPI:S-22",
+							"copy_search": "SUCOSU='22'",
+							"child": [
+								{
+									"code": "3020201",
+									"name": "Adultos",
+									"option_search": "COPI:L-ADU",
+									"copy_search": "COCOCL='ADU'"
+								},
+								{
+									"code": "3020202",
+									"name": "Infantil",
+									"option_search": "COPI:L-INF",
+									"copy_search": "COCOCL='INF'"
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"code": "4",
+			"name": "BG-GUA",
+			"option_search": "COPI:BG-GUA",
+			"copy_search": "BICOBG='GUA'",
+			"child": [
+				{
+					"code": "401",
+					"name": "BG-GUA repetido (ejemplo 5º nivel)",
+					"option_search": "COPI:BG-GUA",
+					"copy_search": "BICOBG='GUA'",
+					"child": [
+						{
+							"code": "40101",
+							"name": "B-AN-GUA",
+							"option_search": "COPI:B-AN-GUA",
+							"copy_search": "SUCOBI='AN-GUA'",
+							"child": [
+								{
+									"code": "4010101",
+									"name": "S-AN-GUA",
+									"option_search": "COPI:S-AN-GUA",
+									"copy_search": "SUCOSU='AN-GUA'",
+									"child": [
+										{
+											"code": "401010101",
+											"name": "L-FD",
+											"option_search": "COPI:L-FD",
+											"copy_search": "COCOCL='FD'"
+										},
+										{
+											"code": "401010102",
+											"name": "L-FB",
+											"option_search": "COPI:L-FB",
+											"copy_search": "COCOCL='FB'"
+										},
+										{
+											"code": "401010103",
+											"name": "L-SALA",
+											"option_search": "COPI:L-SALA",
+											"copy_search": "COCOCL='SALA'"
+										}
+									]
+								}
+							]
+						},
+						{
+							"code": "40102",
+							"name": "B-GU-GUA",
+							"option_search": "COPI:B-GU-GUA",
+							"copy_search": "SUCOBI='GU-GUA'",
+							"child": [
+								{
+									"code": "4010201",
+									"name": "S-GU-GUA",
+									"option_search": "COPI:S-GU-GUA",
+									"copy_search": "SUCOSU='GU-GUA'",
+									"child": [
+										{
+											"code": "401020101",
+											"name": "L-SALA",
+											"option_search": "COPI:L-SALA",
+											"copy_search": "COCOCL='SALA'"
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	]
+}
