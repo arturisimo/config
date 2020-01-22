@@ -132,13 +132,13 @@ public class HoconService {
 		writeFile(configDocument.render(), configSrcFile.getPath());
 		writeFile(configDocument.render(), resourcesPath + "src/opac.conf");
 		
+		config = ConfigFactory.parseFile(configSrcFile).resolve();
+		
 		//overwrite config file
+		final String content = renderFormat();
 		final URL urlConfigFile = ConfigApp.class.getClassLoader().getResource("opac.conf");
 		final File configFile = new File(urlConfigFile.getFile());
-		config = ConfigFactory.parseFile(configFile).resolve();
 		
-		
-		final String content = renderFormat();
 		writeFile(content, configFile.getPath());
 		writeFile(content, resourcesPath + "opac.conf");
 	}
@@ -147,7 +147,7 @@ public class HoconService {
 		return config.root().render(ConfigRenderOptions.defaults().setJson(true).setComments(false).setOriginComments(false));
 	}
 	
-	private String renderFormat() {
+	public String renderFormat() {
 		return config.root().render(ConfigRenderOptions.defaults().setFormatted(true).setComments(false).setOriginComments(false));
 	}
 	

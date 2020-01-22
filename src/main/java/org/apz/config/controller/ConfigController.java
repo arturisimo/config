@@ -40,6 +40,7 @@ public class ConfigController {
 		try {
 			hoconService.register(ConfigDto);
 			final String opacConf = hoconService.renderJson();
+			LOG.info("actualización correcta");
 			return ResponseEntity.status(HttpStatus.OK).body(opacConf);
 		} catch (Exception e) {
 			LOG.error(e.getMessage());
