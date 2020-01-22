@@ -36,11 +36,6 @@ public class HoconService {
 	@Value("${resources.path}")
 	private String resourcesPath;
 	
-	
-	public String get() {
-		return config.root().render(ConfigRenderOptions.defaults().setJson(true).setComments(false).setOriginComments(false));
-	}
-	
 	/**
 	 * Metodo que devuelve un path que corresponde a una estructura compleja, hay
 	 * que seguir navegando para llegar a los subniveles.
@@ -125,7 +120,7 @@ public class HoconService {
 	
 	public void register(ConfigDto configDto) throws Exception {
 		
-		File configSrcFile = new File(HoconService.class.getClassLoader().getResource("src/opac.conf").getFile());
+		final File configSrcFile = new File(HoconService.class.getClassLoader().getResource("src/opac.conf").getFile());
 		
 		ConfigDocument configDocument = ConfigDocumentFactory.parseFile(configSrcFile);
 		
@@ -137,15 +132,27 @@ public class HoconService {
 		writeFile(configDocument.render(), configSrcFile.getPath());
 		writeFile(configDocument.render(), resourcesPath + "src/opac.conf");
 		
-		URL urlConfigFile = ConfigApp.class.getClassLoader().getResource("opac.conf");
-		File configFile = new File(urlConfigFile.getFile());
-		Config config = ConfigFactory.parseFile(configFile);
-		config = config.resolve();
+		//overwrite config file
+		final URL urlConfigFile = ConfigApp.class.getClassLoader().getResource("opac.conf");
+		final File configFile = new File(urlConfigFile.getFile());
+		config = ConfigFactory.parseFile(configFile).resolve();
 		
+		
+		final String content = renderFormat();
+		writeFile(content, configFile.getPath());
+		writeFile(content, resourcesPath + "opac.conf");
+	}
+	
+	public String renderJson() {
+		return config.root().render(ConfigRenderOptions.defaults().setJson(true).setComments(false).setOriginComments(false));
+	}
+	
+	private String renderFormat() {
+		return config.root().render(ConfigRenderOptions.defaults().setFormatted(true).setComments(false).setOriginComments(false));
 	}
 	
 	private static void writeFile(String content, String path) throws Exception {
-		System.out.println("Escritura de "+ path);
+		LOG.info("Escritura de "+ path);
 		Files.write(Paths.get(path), content.getBytes());
 	}
 	
