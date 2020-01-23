@@ -1,7 +1,6 @@
 package org.apz.config;
 
 import java.io.File;
-import java.net.URL;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -21,10 +20,8 @@ public class ConfigApp {
 	
 	@Bean
     public Config config() {
-		URL urlConfigFile = ConfigApp.class.getClassLoader().getResource("opac.conf");
-		File configFile = new File(urlConfigFile.getFile());
-		Config config = ConfigFactory.parseFile(configFile);
-		return config.resolve();
+		final File configSrcFile = new File(ConfigApp.class.getClassLoader().getResource("src/opac.conf").getFile());
+		return ConfigFactory.parseFile(configSrcFile).resolve();
     }
 	
 }

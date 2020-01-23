@@ -134,13 +134,6 @@ public class HoconService {
 		
 		config = ConfigFactory.parseFile(configSrcFile).resolve();
 		
-		//overwrite config file
-		final String content = renderFormat();
-		final URL urlConfigFile = ConfigApp.class.getClassLoader().getResource("opac.conf");
-		final File configFile = new File(urlConfigFile.getFile());
-		
-		writeFile(content, configFile.getPath());
-		writeFile(content, resourcesPath + "opac.conf");
 	}
 	
 	public String renderJson() {
